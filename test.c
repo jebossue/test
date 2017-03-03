@@ -40,8 +40,11 @@ void	ft_utf8(int nb)
 	else if (nb > 0x07ff && nb <= 0xffff)
 	{
 		first_octet = ((((nb << 2) & 255) >> 2) | 128);
+		printf("%d\n", first_octet);
 		second_octet = (((((nb >> 6) & 255) << 2) & 255) >> 2) | 192;
+		printf("%d\n", second_octet);
 		third_octet = ((nb >> 12) & 255) | 224;
+		printf("%d\n", third_octet);
 		write(1, &third_octet, 1);
 		write(1, &second_octet, 1);
 		write(1, &first_octet, 1);
@@ -88,13 +91,18 @@ void	ft_print_bit(int nb)
 	}
 	printf("\n");
 }*/
+char	*ft_utf(int nb, char *buff)
+{
+	return (buff);
+}
+
 int	main()
 {
 	int nb;
 
 	setlocale(LC_ALL, "");
-	nb = 0xffe6;
-	printf("%C\n", 0xffe6);
+	nb = 0x0800;
+	printf("%C\n", 0x0800);
 	ft_utf8(nb);
 //	ft_print_bit_octet(nb);
 	return (0);
